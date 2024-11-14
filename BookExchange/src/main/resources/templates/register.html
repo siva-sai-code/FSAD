@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register a Book - Book Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+		<div th:if="${param.success}">
+		   <div class="success-message">
+		    <p>Registration Successfully</p>
+		   </div>
+		  </div>
+        <h1>Register</h1>
+        <form th:action="@{/register}" method="post">
+            <label for="fullname">FullName:</label>
+			<input type="text" id="fullname" name="fullname" placeholder="Enter your FullName" required>
+			<label for="email">Email:</label>
+			<input type="text" id="email" name="email" placeholder="Enter your Email" required>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" placeholder="Enter your Password" required>
+			<button type="submit">Register</button>
+		</form>
+		<div>
+		   <span th:if="${Userexist}" style="color: red;">User is already exist.</span>
+		</div>
+		<div>
+			<span th:if="${EmailNotValid}" style="color: red;">Email is not valid. Please enter valid email.</span>
+		</div>
+		<div>
+			<span th:if="${PwdNotValid}" style="color: red;">Password is not correct. Password should be in one capital letter, lowercase letter, number and special character. </span>
+		</div>
+		<div>
+			<span th:if="${PwdNotValidLength}" style="color: red;">Password should not be less than 8 characters. </span>
+		</div>
+		<div>
+		   <span class="form-footer">Already have an account? <a th:href="@{/login}">Login</a> here.</span>
+		</div>
+	<div>   
+</body>
+</html>

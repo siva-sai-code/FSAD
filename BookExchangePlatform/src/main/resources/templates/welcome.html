@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome - Book Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            padding-top: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 8px;
+            text-align: center;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .topnav input[type="text"] {
+            float: right;
+            padding: 5px;
+        }
+        .topnav a {
+            float: right;
+            padding: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+		.span-text {
+		  text-align: right;
+		  color: black;
+		 }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a th:href="@{/book/register}">Register a Book</a></li>
+            <li><a th:href="@{/requestBook}">Request a Book</a></li>
+            <li><a th:href="@{/viewBooks}">View Books</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+		<h1 th:text="${userdetail.fullname}"></h1><br>
+        <h1>Welcome to Book Exchange</h1>
+    </div>
+	<div class="span-text">
+	   <span sec:authorize="isAuthenticated" style="color: white;"><a th:href="@{/logout}">Logout</a></span>
+	  </div>
+</body>
+</html>
